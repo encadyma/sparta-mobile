@@ -1,5 +1,8 @@
 {
   "name": "Sparta",
-  "app_id": "",
-  "type": "ionic-angular"
+  "app_id": "7d703c9f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
