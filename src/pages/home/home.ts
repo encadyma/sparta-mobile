@@ -28,6 +28,8 @@ export class HomePage implements OnInit {
           let newItem = item;
           if (typeof media.json().media_details.sizes !== 'undefined' && typeof media.json().media_details.sizes.large !== 'undefined') {
             newItem.featuredImageURL = media.json().media_details.sizes.large.source_url;
+          } else if (typeof media.json().source_url !== 'undefined') {
+            newItem.featuredImageURL = media.json().source_url;
           }
           return newItem;
         });

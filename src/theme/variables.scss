@@ -34,13 +34,20 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #b71c1c,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
 
+
+$tabs-background: #f8f8f8;
+$tabs-border-color: $tabs-background;
+$tabs-tab-color-inactive: #303030;
+$tabs-tab-color-active: #101010;
+$tabs-ios-border: none;
+$tabs-wp-border: none;
 
 // App iOS Variables
 // --------------------------------------------------

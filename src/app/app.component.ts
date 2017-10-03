@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { SearchPage } from '../pages/search/search';
+import { ListPage } from '../pages/list/list';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,6 +13,8 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild('rootNav') navCtrl: NavController;
   rootPage: any = HomePage;
+  searchPage: any = SearchPage;
+  listPage: any = ListPage;
 
   goToRoot() {
 // console.log('go to root', this.navCtrl.length());

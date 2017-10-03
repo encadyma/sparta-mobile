@@ -25,6 +25,8 @@ export class PostPage implements OnInit {
       }).toPromise().then((media) => {
         if (typeof media.json().media_details.sizes !== 'undefined' && typeof media.json().media_details.sizes.large !== 'undefined') {
           this.post.featuredImageURL = media.json().media_details.sizes.large.source_url;
+        } else if (typeof media.json().source_url !== 'undefined') {
+          this.post.featuredImageURL = media.json().source_url;
         }
       });
 
