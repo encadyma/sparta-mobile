@@ -1,0 +1,13 @@
+<ion-content padding>
+  <h2 padding>{{postCategoryName}}</h2>
+  <ion-card *ngFor="let post of posts" (tap)="goToPost(post._links.self[0].href)">
+    <img src="{{post.featuredImageURL}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{post.title.rendered}}
+      </ion-card-title>
+      <p [innerHTML]="removeHTML(post.excerpt.rendered)">
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
