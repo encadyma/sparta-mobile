@@ -2,7 +2,6 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <h1 padding>Trending</h1>
   <ion-card *ngFor="let post of posts" (tap)="goToPost(post._links.self[0].href)">
     <img src="{{post.featuredImageURL}}"/>
     <ion-card-content>

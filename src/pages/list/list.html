@@ -1,3 +1,10 @@
-<ion-content padding>
-  <span>Hi there</span>
+<ion-content>
+  <ion-item-group>
+    <ion-item-divider color="light">Sparta</ion-item-divider>
+    <ion-item (tap)="goToCategory(34, 'General')">General</ion-item>
+    <ion-item (tap)="goToCategory(27, 'Sports')">Sports</ion-item>
+    <ion-item (tap)="goToCategory(28, 'ASB')">ASB</ion-item>
+    <ion-item (tap)="goToCategory(107, 'Arts')">Arts</ion-item>
+    <ion-item (tap)="goToCategory(30, 'Clubs')">Clubs</ion-item>
+  </ion-item-group>
 </ion-content>

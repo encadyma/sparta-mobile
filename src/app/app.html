@@ -1,8 +1,11 @@
+<header>
+  <img src="assets/Logo.png" class="header-image" (tap)="goToHome()"/>
+</header>
 <ion-nav #rootNav [root]="rootPage"></ion-nav>
 <!--<div class="main-fab" (tap)="goToRoot()"><ion-icon name="home"></ion-icon></div>-->
-<ion-tabs class="tabs-background-calm tabs-color-light">
-  <ion-tab tabIcon="home" [root]="rootPage"></ion-tab>
-  <ion-tab tabIcon="list" [root]="listPage"></ion-tab>
+<ion-tabs #tabNav>
+  <ion-tab #tabHome tabIcon="home" [root]="rootPage"></ion-tab>
+  <ion-tab #tabList tabIcon="list" [root]="listPage"></ion-tab>
   <!--<ion-tab tabIcon="heart"></ion-tab>-->
-  <ion-tab tabIcon="search" [root]="searchPage"></ion-tab>
+  <ion-tab #tabSearch tabIcon="search" [root]="searchPage"></ion-tab>
 </ion-tabs>

@@ -15,6 +15,27 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+header {
+  background-color: #fefefe;
+  box-sizing: border-box;
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  color: #000000;
+  width: 100%;
+  z-index: 100;
+  text-align: center;
+
+  .header-image {
+    margin: 0 auto;
+    height: 30px;
+  }
+}
+
+ion-content {
+  margin-top: 52px;
+}
+
 .main-fab {
   background-color: #b71c1c;
   color: #fefefe;
