@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
+import he from 'he';
 
 import { PostPage } from '../post/post';
 
@@ -51,7 +52,7 @@ export class HomePage implements OnInit {
   }
 
   removeHTML(text: string) {
-    return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    return text ? he.decode(String(text).replace(/<[^>]+>/gm, '')) : '';
   }
 
   ngOnInit() {
