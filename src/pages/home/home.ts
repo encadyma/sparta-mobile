@@ -52,7 +52,7 @@ export class HomePage implements OnInit {
   }
 
   removeHTML(text: string) {
-    return text ? he.decode(String(text).replace(/<[^>]+>/gm, '')) : '';
+    return text ? he.decode(String(text).replace(/<[^>]+>/gm, '')).substring(0, 60) + "..." : '';
   }
 
   ngOnInit() {
