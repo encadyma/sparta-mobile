@@ -16,12 +16,6 @@
 // automatically applied to the <body> element in the app.
 
 ion-toolbar {
-  background-color: #fefefe;
-  box-sizing: border-box;
-  //padding: 10px;
-  color: #000000;
-  //width: 100%;
-  z-index: 100;
   text-align: center;
 
   .header-image {
@@ -61,7 +55,32 @@ ion-content {
   margin-bottom: 40px;
 }
 
-/* POST COVER IMAGE */
-.post-cover-image {
+.news-card {
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
 
+  img {
+    padding: 0;
+    margin: 0;
+    width: 28%;
+  }
+
+  .news-card-desc {
+    display: inline-block;
+    width: 60%;
+    margin-left: 10px;
+    vertical-align: top;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 12px;
+    color: #555;
+  }
 }

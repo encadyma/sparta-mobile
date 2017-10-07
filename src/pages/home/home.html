@@ -1,16 +1,14 @@
-<ion-content padding>
+<ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let post of posts" (tap)="goToPost(post._links.self[0].href)">
+  <div class="news-card" *ngFor="let post of posts" (tap)="goToPost(post._links.self[0].href)">
     <img src="{{post.featuredImageURL}}"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{post.title.rendered}}
-      </ion-card-title>
+    <div class="news-card-desc">
+      <h3>{{post.title.rendered}}</h3>
       <p [innerHTML]="removeHTML(post.excerpt.rendered)">
       </p>
-    </ion-card-content>
-  </ion-card>
+    </div>
+  </div>
   <br><br><br>
 </ion-content>
