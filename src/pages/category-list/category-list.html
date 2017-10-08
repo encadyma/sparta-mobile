@@ -1,4 +1,4 @@
-<ion-content padding>
+<ion-content>
   <div class="holder"></div>
   <h2 padding>{{postCategoryName}}</h2>
   <div class="news-card" [class.news-full]="posts.indexOf(post) == 0" *ngFor="let post of posts" (tap)="goToPost(post._links.self[0].href)">
