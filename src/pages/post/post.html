@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons>
+    <ion-buttons left>
       <button ion-button icon-left (tap)="goBack()">
         <ion-icon name="arrow-back"></ion-icon>
         Back
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (tap)="share()" style="margin-right: 10px;">
+        <ion-icon name="share"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
