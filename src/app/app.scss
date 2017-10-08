@@ -40,6 +40,10 @@ ion-toolbar {
   }
 }
 
+.ios ion-toolbar > * {
+  padding-top: 12px;
+}
+
 ion-content {
   background-color: #fff !important;
   font-family: 'Muli', sans-serif;
