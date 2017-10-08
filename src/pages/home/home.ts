@@ -16,18 +16,25 @@ export class HomePage implements OnInit {
   // For getting the news feeds
   loading = false;
   posts = [];
+  nextPageCount = 1;
+
+  onSwipe(infiniteScroll) {
+    this.getFeed(this.nextPageCount).then(() => {
+      infiniteScroll.complete();
+    })
+  }
 
   goToHome() {
     this.navCtrl.pop();
   }
 
-  getFeed() {
-    return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts`, {
+  getFeed(pageNum: number = 1, reset = false) {
+    return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts?page=${pageNum}`, {
       withCredentials: false
     }).toPromise().then((data) => {
-      this.posts = data.json();
+      let newData = data.json();
 
-      this.posts.map((item) => {
+      newData.map((item) => {
         this.http.get(item._links['wp:featuredmedia'][0].href, {
           withCredentials: false
         }).toPromise().then((media) => {
@@ -41,11 +48,22 @@ export class HomePage implements OnInit {
         });
       });
 
+      if (reset) {
+        this.posts = [];
+        this.nextPageCount = 1;
+      }
+
+      newData.forEach(element => {
+        this.posts.push(element);
+      });
+
+      this.nextPageCount++;
+
     });
   }
 
   doRefresh(refresher) {
-    this.getFeed().then(() => {
+    this.getFeed(1).then(() => {
       refresher.complete();
     });
   }
