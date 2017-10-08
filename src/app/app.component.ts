@@ -12,23 +12,10 @@ import { ListPage } from '../pages/list/list';
 })
 @Injectable()
 export class MyApp {
-  @ViewChild('tabNav') tabCtrl: Tabs;
-  @ViewChild('tabHome') tabHome: NavController;
-  @ViewChild('tabList') tabList: NavController;
 
   rootPage: any = HomePage;
   searchPage: any = SearchPage;
   listPage: any = ListPage;
-
-  goToHome() {
-    this.tabHome.popToRoot();
-    this.tabCtrl.select(0);
-  }
-
-  goToList() {
-    this.tabList.popToRoot();
-    this.tabCtrl.select(1);
-  }
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

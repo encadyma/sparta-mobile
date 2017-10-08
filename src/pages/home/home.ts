@@ -1,10 +1,12 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { NavController } from 'ionic-angular';
+import { NavController, PopoverController } from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
 import he from 'he';
 
 import { PostPage } from '../post/post';
+import { SearchPage } from '../search/search';
+import { ListPage } from '../list/list';
 
 @Injectable()
 @Component({
@@ -28,6 +30,16 @@ export class HomePage implements OnInit {
         infiniteScroll.complete();
       }
     });
+  }
+
+  showCategories($event) {
+    this.popoverCtrl.create(ListPage).present({
+      ev: $event
+    });
+  }
+
+  goSearch() {
+    this.navCtrl.push(SearchPage);
   }
 
   goToHome() {
@@ -96,7 +108,8 @@ export class HomePage implements OnInit {
   }
 
   constructor(
-    public navCtrl: NavController, private http: Http
+    public navCtrl: NavController, private http: Http,
+    private popoverCtrl: PopoverController
   ) { }
 
 }

@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar (ionInput)="searchPosts" debounce="500" (input)="inputToSearch($event)"></ion-searchbar>
+    <ion-buttons left style="margin-right: 10px;">
+      <button ion-button icon-only (tap)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="query" right (ionInput)="searchPosts" debounce="500" (input)="inputToSearch($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="holder"></div>
+  <span class="search-query" *ngIf="query">Searching for "{{query}}"</span>
 </ion-content>

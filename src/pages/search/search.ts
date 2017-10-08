@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-search',
@@ -8,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class SearchPage implements OnInit {
 
   posts = [];
+  query = "";
 
   inputToSearch($event) {
     console.log($event);
   }
 
-  constructor() { }
+  goBack() {
+    this.navCtrl.popToRoot();
+  }
+
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() { }
 }

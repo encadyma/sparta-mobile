@@ -61,11 +61,23 @@ export class PostPage implements OnInit {
     this.getPost();
   }
 
+  goBack() {
+    if (this.navCtrl.canGoBack()) {
+      // Only go back one page. Used for posts from categories & search.
+      this.navCtrl.pop();
+    } else {
+      // From home page.
+      this.navCtrl.popToRoot();
+    }
+  }
+
   constructor(
     private http: Http,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private navCtrl: NavController
   ) {
     this.postLink = this.navParams.get('link');
+    console.log(this.navCtrl.canGoBack());
   }
 
 }

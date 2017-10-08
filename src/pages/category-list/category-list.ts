@@ -31,6 +31,16 @@ export class CategoryListPage implements OnInit {
     });
   }
 
+  goBack() {
+    if (this.navCtrl.canGoBack()) {
+      // Only go back one page. Used for posts from categories & search.
+      this.navCtrl.pop();
+    } else {
+      // From home page.
+      this.navCtrl.popToRoot();
+    }
+  }
+
   getFeed(pageNum: number = 1, reset = false) {
     return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts?page=${pageNum}&categories=${this.postCategoryId}`, {
       withCredentials: false
