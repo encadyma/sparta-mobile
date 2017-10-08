@@ -10,7 +10,8 @@
     </div>
     <img src="{{post.featuredImageURL}}"/>
   </div>
-  <ion-infinite-scroll (ionInfinite)="onSwipe($event)">
+  <div *ngIf="isShowingEnd" style="text-align: center; color: #777; margin: 10px 0;"><i>That's all, Spartans!</i></div>
+  <ion-infinite-scroll *ngIf="!isShowingEnd" (ionInfinite)="onSwipe($event)">
    <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   <br>

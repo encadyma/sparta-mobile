@@ -17,26 +17,56 @@ export class CategoryListPage implements OnInit {
   posts = [];
   postCategoryId = '';
   postCategoryName = 'Loading...';
+  nextPageCount = 1;
+  isShowingEnd = false;
 
-  getFeed() {
-    return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts?categories=${this.postCategoryId}`, {
+  onSwipe(infiniteScroll) {
+    this.getFeed(this.nextPageCount).then(() => {
+      infiniteScroll.complete();
+    }).catch((err) => {
+      if (err.json().code === 'rest_post_invalid_page_number') {
+        this.isShowingEnd = true;
+        infiniteScroll.complete();
+      }
+    });
+  }
+
+  getFeed(pageNum: number = 1, reset = false) {
+    return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts?page=${pageNum}&categories=${this.postCategoryId}`, {
       withCredentials: false
     }).toPromise().then((data) => {
-      this.posts = data.json();
+      let newData = data.json();
 
-      this.posts.map((item) => {
-        this.http.get(item._links['wp:featuredmedia'][0].href, {
-          withCredentials: false
-        }).toPromise().then((media) => {
+      newData.map((item) => {
+        if (item._links['wp:featuredmedia']) {
+          this.http.get(item._links['wp:featuredmedia'][0].href, {
+            withCredentials: false
+          }).toPromise().then((media) => {
+            let newItem = item;
+            if (typeof media.json().media_details.sizes !== 'undefined' && typeof media.json().media_details.sizes.large !== 'undefined') {
+              newItem.featuredImageURL = media.json().media_details.sizes.large.source_url;
+            } else if (typeof media.json().source_url !== 'undefined') {
+              newItem.featuredImageURL = media.json().source_url;
+            }
+            return newItem;
+          });
+        } else {
           let newItem = item;
-          if (typeof media.json().media_details.sizes !== 'undefined' && typeof media.json().media_details.sizes.large !== 'undefined') {
-            newItem.featuredImageURL = media.json().media_details.sizes.large.source_url;
-          } else if (typeof media.json().source_url !== 'undefined') {
-            newItem.featuredImageURL = media.json().source_url;
-          }
+          newItem.featuredImageURL = '';
           return newItem;
-        });
+        }
       });
+
+      if (reset) {
+        this.posts = [];
+        this.nextPageCount = 1;
+      }
+
+      newData.forEach(element => {
+        this.posts.push(element);
+      });
+
+      this.nextPageCount++;
 
     });
   }

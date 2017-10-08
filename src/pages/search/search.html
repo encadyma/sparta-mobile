@@ -1,4 +1,4 @@
 <ion-content>
   <div class="holder"></div>
-  <ion-searchbar (ionInput)="searchPosts"></ion-searchbar>
+  <ion-searchbar (ionInput)="searchPosts" debounce="500" (input)="inputToSearch($event)"></ion-searchbar>
 </ion-content>

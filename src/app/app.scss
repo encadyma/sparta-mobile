@@ -15,6 +15,8 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@import 'fonts';
+
 ion-navbar {
   text-align: center;
 
@@ -22,27 +24,23 @@ ion-navbar {
     margin: 0 auto;
     height: 30px;
   }
-
 }
 
 ion-content {
   background-color: #fff !important;
+  font-family: 'Muli', sans-serif;
 }
 
 .holder {
   display: none;
-  // padding: 4px;
 }
 
-/*
-.holder {
+// Only for web
+/*.holder {
   display: block;
-  padding-top: 44px;
-}
-
-ion-content.content-md .holder{
-  padding-top: 56px;
+  padding-top: 60px;
 }*/
+
 
 .main-fab {
   background-color: #b71c1c;
