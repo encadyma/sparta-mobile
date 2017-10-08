@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { NavController, NavParams } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -71,10 +72,20 @@ export class PostPage implements OnInit {
     }
   }
 
+  share() {
+    this.socialSharing.share(
+      `From Sparta: "${this.removeHTML(this.post.title.rendered)}" -\n${this.removeHTML(this.post.excerpt.rendered)}`,
+      `From Sparta: "${this.removeHTML(this.post.title.rendered)}"`,
+      this.post.featuredImageURL,
+      this.post.link
+    );
+  }
+
   constructor(
     private http: Http,
     private navParams: NavParams,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private socialSharing: SocialSharing
   ) {
     this.postLink = this.navParams.get('link');
     console.log(this.navCtrl.canGoBack());
