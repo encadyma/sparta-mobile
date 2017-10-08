@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
@@ -6,6 +6,7 @@ import he from 'he';
 
 import { PostPage } from '../post/post';
 
+@Injectable()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,6 +16,10 @@ export class HomePage implements OnInit {
   // For getting the news feeds
   loading = false;
   posts = [];
+
+  goToHome() {
+    this.navCtrl.pop();
+  }
 
   getFeed() {
     return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts`, {

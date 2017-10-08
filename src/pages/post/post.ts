@@ -62,10 +62,10 @@ export class PostPage implements OnInit {
   }
 
   constructor(
-    public navCtrl: NavController, private http: Http,
+    private http: Http,
     private navParams: NavParams
   ) {
-    this.postLink = navParams.get('link');
+    this.postLink = this.navParams.get('link');
   }
 
 }

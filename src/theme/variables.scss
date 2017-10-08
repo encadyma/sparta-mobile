@@ -41,13 +41,17 @@ $colors: (
   dark:       #222
 );
 
-
+$background-color: #f8f8f8;
 $tabs-background: #f8f8f8;
 $tabs-border-color: $tabs-background;
 $tabs-tab-color-inactive: #303030;
 $tabs-tab-color-active: #101010;
 $tabs-ios-border: none;
 $tabs-wp-border: none;
+
+$toolbar-ios-height: 60px;
+$toolbar-md-height: 60px;
+$toolbar-wp-height: 60px;
 
 // App iOS Variables
 // --------------------------------------------------

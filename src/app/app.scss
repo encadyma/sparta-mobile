@@ -15,22 +15,34 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-ion-toolbar {
+ion-navbar {
   text-align: center;
 
   .header-image {
     margin: 0 auto;
     height: 30px;
   }
+
 }
 
 ion-content {
-  margin-top: 44px;
-
-  &.content-md {
-    margin-top: 56px;
-  }
+  background-color: #fff !important;
 }
+
+.holder {
+  display: none;
+  // padding: 4px;
+}
+
+/*
+.holder {
+  display: block;
+  padding-top: 44px;
+}
+
+ion-content.content-md .holder{
+  padding-top: 56px;
+}*/
 
 .main-fab {
   background-color: #b71c1c;
@@ -61,6 +73,7 @@ ion-content {
 
 .news-card {
   // background-color: #fafafa;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +97,7 @@ ion-content {
     h3 {
       font-size: 16px;
       padding-top: 0;
-      margin-top: 0;
+      margin-top: 8px;
       margin-bottom: 8px;
       font-weight: 500;
       max-width: 90%;
@@ -98,6 +111,7 @@ ion-content {
       margin: 0;
       overflow-wrap: break-word;
       max-width: 90%;
+      line-height: 1.3;
     }
   }
 
