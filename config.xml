@@ -83,6 +83,7 @@
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>
+    <preference name="StatusBarOverlaysWebView" value="false" />
     <engine name="android" spec="^6.3.0" />
     <engine name="ios" spec="^4.5.1" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.6.1" />

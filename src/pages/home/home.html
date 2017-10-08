@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title left (tap)="showCategories($event)">
+    <div left (tap)="showCategories($event)" style="margin-left: 10px;">
       <img src="assets/Logo.png" class="header-image"/>
       <span>Home</span>
-      <ion-icon class="icon-dropdown" name="arrow-dropdown"></ion-icon>
-    </ion-title>
+      <ion-icon class="icon-dropdown icon-md" name="arrow-dropdown"></ion-icon>
+    </div>
     <ion-buttons right>
       <button ion-button icon-only (tap)="goSearch()" style="margin-right: 10px;">
         <ion-icon name="search"></ion-icon>
