@@ -43,7 +43,7 @@ export class SearchPage implements OnInit {
       this.containsNoResults = false;
       return Observable.of([]);
     } else {
-      return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts?search=${term.trim()}&page=${pageCount}`, {
+      return this.http.get(`http://news.lchsspartans.net/wp-json/wp/v2/posts?search=${term.trim()}&page=${pageCount}&orderby=relevance`, {
         withCredentials: false
       }).map((response) => {
         let posts = response.json();
