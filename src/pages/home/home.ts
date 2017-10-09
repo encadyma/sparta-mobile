@@ -95,6 +95,7 @@ export class HomePage implements OnInit {
 
   doRefresh(refresher) {
     this.getFeed(1, true).then(() => {
+      this.isShowingEnd = false;
       refresher.complete();
     });
   }
