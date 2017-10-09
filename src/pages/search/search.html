@@ -5,10 +5,21 @@
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-searchbar [(ngModel)]="query" right (ionInput)="searchPosts" debounce="500" (input)="inputToSearch($event)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="query" right (ionInput)="searchPosts" debounce="500" (ionInput)="inputToSearch($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="holder"></div>
   <span class="search-query" *ngIf="query">Searching for "{{query}}"</span>
+  <ion-list *ngIf="query">
+    <button ion-item *ngFor="let post of posts | async" (click)="goToPost(post._links.self[0].href)">
+      <h2 [innerHTML]="post.title.rendered"></h2>
+      <p [innerHTML]="post.excerpt.rendered"></p>
+    </button>
+  </ion-list>
+  <div *ngIf="containsNoResults" class="search-no-results">
+    <img src="assets/SearchImprint.png" width="80" height="80"/>
+    <h5>No results.</h5>
+    <p>We weren't able to find what you were looking for. Try using a different search term instead.</p>
+  </div>
 </ion-content>

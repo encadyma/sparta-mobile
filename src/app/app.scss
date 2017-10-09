@@ -165,3 +165,20 @@ ion-content {
   color: #888;
   font-size: 11px;
 }
+
+.search-no-results {
+  text-align: center;
+  margin-top: 10vh;
+
+  p {
+    color: #777;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+}
+
+.search-highlighted {
+  color: #fefefe;
+  background-color: #B71C1C;
+}
