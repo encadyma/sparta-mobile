@@ -1,0 +1,2 @@
+export const ONESIGNAL_KEY_ID = '841b0ef4-7800-40f8-a001-2c62310002c4';
+export const FIREBASE_KEY_ID = '736380137038';
