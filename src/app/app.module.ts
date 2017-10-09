@@ -14,6 +14,7 @@ import { CategoryListPage } from '../pages/category-list/category-list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     StatusBar,
     SplashScreen,
     SocialSharing,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
