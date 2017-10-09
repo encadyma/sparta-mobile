@@ -57,12 +57,18 @@ export class CategoryListPage implements OnInit {
               newItem.featuredImageURL = media.json().media_details.sizes.large.source_url;
             } else if (typeof media.json().source_url !== 'undefined') {
               newItem.featuredImageURL = media.json().source_url;
+            } else {
+              newItem.featuredImageURL = 'assets/NoImage.png';
             }
+            return newItem;
+          }).catch((err) => {
+            let newItem = item;
+            newItem.featuredImageURL = 'assets/NoImage.png';
             return newItem;
           });
         } else {
           let newItem = item;
-          newItem.featuredImageURL = '';
+          newItem.featuredImageURL = 'assets/NoImage.png';
           return newItem;
         }
       });
