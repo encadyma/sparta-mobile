@@ -30,7 +30,7 @@ plugins/ios.json
 www/
 $RECYCLE.BIN/
 
-src/app/secret.ts
+#src/app/secret.ts
 
 .DS_Store
 Thumbs.db
