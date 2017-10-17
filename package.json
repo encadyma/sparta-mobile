@@ -1,6 +1,6 @@
 {
     "name": "Sparta",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": "Ionic Framework",
     "homepage": "http://ionicframework.com/",
     "private": true,
@@ -54,7 +54,7 @@
         "@ionic/app-scripts": "^3.0.0",
         "typescript": "2.3.4"
     },
-    "description": "An Ionic project",
+    "description": "News application for LCHS students",
     "cordova": {
         "plugins": {
             "cordova-plugin-advanced-http": {},
