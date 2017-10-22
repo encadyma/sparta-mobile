@@ -16,11 +16,15 @@
 <ion-content>
   <div class="holder"></div>
   <div *ngIf="post">
-    <img class="post-cover-image" [src]="post.featuredImageURL" *ngIf="post.featuredImageURL" width="100%"/>
-    <div class="post-content" padding>
+    <img class="post-cover-image" [src]="post.featuredImageURL" *ngIf="post.featuredImageURL" (tap)="imgService.open(post.featuredImageURL)" width="100%"/>
+    <div class="post-content" padding (tap)="processClick($event)">
       <h4 [innerHTML]="removeHTML(post.title.rendered)"></h4>
-      <p [innerHTML]="removeHTML(post.content.rendered)" style="line-height: 1.3;">
+      <p [innerHTML]="attachImgs(removeHTML(post.content.rendered))" style="line-height: 1.3;">
       </p>
     </div>
   </div>
+  <div class="img-overlay" [class.hidden]="!imgService.isOpened" (click)="imgService.close()">
+    <img *ngIf="imgService.isOpened" [src]="imgService.currentURL"/>
+  </div>
 </ion-content>
+

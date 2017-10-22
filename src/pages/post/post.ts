@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/add/operator/toPromise';
 import he from 'he';
+import { ImagesService } from '../../_services/images.service';
 
 @Component({
   selector: 'page-post',
@@ -17,6 +18,7 @@ export class PostPage implements OnInit {
   postLink = '';
 
   getPost() {
+    this.imgService.close();
     this.http.get(this.postLink, {
       withCredentials: false
     }).toPromise().then((data) => {
@@ -33,6 +35,30 @@ export class PostPage implements OnInit {
       });
 
     });
+  }
+
+  attachImgs(htmlPost: string) {
+    let parser = new DOMParser();
+    let body = parser.parseFromString("<article>" + htmlPost + "</article>", "text/html");
+
+    if (body.getElementsByTagName("img").length) {
+      for (let elem in body.getElementsByTagName("img")) {
+
+        if (body.getElementsByTagName("img")[elem].parentNode) {
+          (body.getElementsByTagName("img")[elem].parentNode as any).removeAttribute("href");
+        }
+
+      }
+    }
+
+    return body.getElementsByTagName("article")[0].innerHTML;
+  }
+
+  processClick($event) {
+    $event.preventDefault();
+    if ($event.target && $event.target.nodeName === 'IMG') {
+      this.imgService.open($event.target.getAttribute('src'));
+    }
   }
 
   removeHTML(text: string) {
@@ -86,10 +112,10 @@ export class PostPage implements OnInit {
     private http: Http,
     private navParams: NavParams,
     private navCtrl: NavController,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    public imgService: ImagesService
   ) {
     this.postLink = this.navParams.get('link');
-    console.log(this.navCtrl.canGoBack());
   }
 
 }

@@ -11,6 +11,8 @@ import { SearchPage } from '../pages/search/search';
 import { ListPage } from '../pages/list/list';
 import { CategoryListPage } from '../pages/category-list/category-list';
 
+import { ImagesService } from '../_services/images.service';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -47,6 +49,7 @@ import { OneSignal } from '@ionic-native/onesignal';
     SplashScreen,
     SocialSharing,
     OneSignal,
+    ImagesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
